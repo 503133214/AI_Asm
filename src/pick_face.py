@@ -5,7 +5,7 @@ import os
 import cv2
 import time
 from read_image import read_AllImg
-
+from read_data import read_name_list
 
 def readPicSaveFace(sourcePath, objectPath, *suffix):
     try:
@@ -34,7 +34,17 @@ def readPicSaveFace(sourcePath, objectPath, *suffix):
 
     else:
         print('Already read ' + str(count - 1) + ' Faces to Destination ' + objectPath)
+def readPicSaveFace_Path(sourcePath, objectPath, *suffix):
+    file_list = read_name_list(sourcePath)
+    for file_name in file_list:
+        directory = objectPath + os.sep + file_name
+        if os.path.exists(directory):
+            continue
+        if not os.path.exists(directory):
+            os.makedirs(directory)
+        readPicSaveFace(sourcePath + os.sep + file_name, objectPath+os.sep+file_name, *suffix)
 
 
 if __name__ == '__main__':
-    readPicSaveFace('../img/source-saber/girl', '../img/picTest/girl', '.jpg', '.JPG', 'png', 'PNG')
+    #readPicSaveFace('../img/dataset', '../img/picTest/saber', '.jpg', '.JPG', 'png', 'PNG')
+    readPicSaveFace_Path('../img/source-saber', '../img/picTest', '.jpg', '.JPG', 'png', 'PNG')

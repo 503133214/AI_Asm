@@ -4,29 +4,9 @@
     <inspection_tool class="PyCompatibilityInspection" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="ourVersions">
         <value>
-          <list size="1">
-            <item index="0" class="java.lang.String" itemvalue="3.12" />
-          </list>
-        </value>
-      </option>
-    </inspection_tool>
-    <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
-      <option name="ignoredPackages">
-        <value>
-          <list size="13">
-            <item index="0" class="java.lang.String" itemvalue="dglgo" />
-            <item index="1" class="java.lang.String" itemvalue="pydantic" />
-            <item index="2" class="java.lang.String" itemvalue="PYPOWER" />
-            <item index="3" class="java.lang.String" itemvalue="Shapely" />
-            <item index="4" class="java.lang.String" itemvalue="dgl-cu116" />
-            <item index="5" class="java.lang.String" itemvalue="torch" />
-            <item index="6" class="java.lang.String" itemvalue="numpy" />
-            <item index="7" class="java.lang.String" itemvalue="torchvision" />
-            <item index="8" class="java.lang.String" itemvalue="alabaster" />
-            <item index="9" class="java.lang.String" itemvalue="sphinxcontrib.applehelp" />
-            <item index="10" class="java.lang.String" itemvalue="rdkit-pypi" />
-            <item index="11" class="java.lang.String" itemvalue="urllib3" />
-            <item index="12" class="java.lang.String" itemvalue="torchaudio" />
+          <list size="2">
+            <item index="0" class="java.lang.String" itemvalue="2.7" />
+            <item index="1" class="java.lang.String" itemvalue="3.12" />
           </list>
         </value>
       </option>

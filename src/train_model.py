@@ -61,7 +61,7 @@ class Model(object):
             metrics=['accuracy'])
 
         # epochs、batch_size为可调的参数
-        self.model.fit(self.dataset.X_train, self.dataset.Y_train, epochs=7, batch_size=20)
+        self.model.fit(self.dataset.X_train, self.dataset.Y_train, epochs=30, batch_size=20)
 
     def evaluate_model(self):
         print('\nTesting---------------')
