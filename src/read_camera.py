@@ -7,11 +7,13 @@ from read_data import read_name_list
 
 
 class Camera_reader(object):
+    IMG_SIZE = 128
+    PROB_THRESHOLD = 0.7
+
     # 在初始化camera的时候建立模型，并加载已经训练好的模型
     def __init__(self):
         self.model = Model()
         self.model.load()
-        self.img_size = 128
 
     def build_camera(self):
         # opencv文件中人脸级联文件的位置，用于帮助识别图像或者视频流中的人脸
@@ -36,9 +38,9 @@ class Camera_reader(object):
                 ROI = gray[y:y + h, x:x + w]
                 if ROI.size == 0:
                     continue
-                ROI = cv2.resize(ROI, (self.img_size, self.img_size), interpolation=cv2.INTER_LINEAR)
+                ROI = cv2.resize(ROI, (self.IMG_SIZE, self.IMG_SIZE), interpolation=cv2.INTER_LINEAR)
                 label, prob = self.model.predict(ROI)  # 利用模型对cv2识别出的人脸进行比对
-                if prob > 0.7:  # 如果模型认为概率高于70%则显示为模型中已有的label
+                if prob > self.PROB_THRESHOLD:  # 如果模型认为概率高于70%则显示为模型中已有的label
                     show_name = name_list[label]
                 else:
                     show_name = 'Stranger'
