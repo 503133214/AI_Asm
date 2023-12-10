@@ -82,12 +82,6 @@ def usr_sign_up():
             # 然后销毁窗口。
             window_sign_up.destroy()
 
-    # def pick():
-    #     directory = "../img/dataset"
-    #     destination = "../img/picTest"
-    #     pf.readPicSaveFace_Path(directory, destination, '.jpg', '.JPG', 'png', 'PNG')
-    #     tkinter.messagebox.showinfo('Welcome', 'You have successfully picked up!')
-    #     window_sign_up.destroy()
     def train():
         tm.train()
         tkinter.messagebox.showinfo('Welcome', 'You have successfully trained!')

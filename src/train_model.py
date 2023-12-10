@@ -103,10 +103,3 @@ def train():
 
 if __name__ == '__main__':
     train()
-    # dataset = DataSet('../img/picTest')
-    # model = Model()
-    # model.read_trainData(dataset)
-    # model.build_model()
-    # model.train_model()
-    # model.evaluate_model()
-    # model.save()
