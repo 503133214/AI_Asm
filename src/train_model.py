@@ -79,8 +79,8 @@ class Model(object):
         print('Model Loaded.')
         self.model = load_model(file_path)
 
-    # 需要确保输入的img得是灰化之后（channel =1 )且大小为IMAGE_SIZE的人脸图片
     def predict(self, img):
+        # 需要确保输入的img得是灰化之后（channel=1) 且大小为IMAGE_SIZE的人脸图片
         # (samples, height, width, channels)
         img = img.reshape((1, self.IMAGE_SIZE, self.IMAGE_SIZE, 1))
         img = img.astype('float32')
