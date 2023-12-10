@@ -1,0 +1,6 @@
+future~=0.18.3
+scikit-learn~=1.2.0
+tensorflow~=2.15.0
+opencv-python~=4.8.1.78
+numpy~=1.24.3
+keras~=2.15.0

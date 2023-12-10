@@ -6,6 +6,7 @@ from keras.models import Sequential, load_model
 from keras.layers import Dense, Activation, Convolution2D, MaxPooling2D, Flatten, Dropout
 import numpy as np
 
+
 # 建立一个基于CNN的人脸识别模型
 class Model(object):
     FILE_PATH = "../model/model.h5"  # 模型进行存储和读取的地方
@@ -61,7 +62,7 @@ class Model(object):
             metrics=['accuracy'])
 
         # epochs、batch_size为可调的参数
-        self.model.fit(self.dataset.X_train, self.dataset.Y_train, epochs=30, batch_size=20)
+        self.model.fit(self.dataset.X_train, self.dataset.Y_train, epochs=30, batch_size=30)
 
     def evaluate_model(self):
         print('\nTesting---------------')
@@ -89,7 +90,8 @@ class Model(object):
 
         return max_index, result[0][max_index]  # 第一个参数为概率最高的label的index,第二个参数为对应概率
 
-if __name__ == '__main__':
+
+def train():
     dataset = DataSet('../img/picTest')
     model = Model()
     model.read_trainData(dataset)
@@ -97,3 +99,14 @@ if __name__ == '__main__':
     model.train_model()
     model.evaluate_model()
     model.save()
+
+
+if __name__ == '__main__':
+    train()
+    # dataset = DataSet('../img/picTest')
+    # model = Model()
+    # model.read_trainData(dataset)
+    # model.build_model()
+    # model.train_model()
+    # model.evaluate_model()
+    # model.save()

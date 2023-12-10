@@ -34,7 +34,3 @@ def read_AllImg(path,*suffix):
         print("Successfully read")
         return resultArray
 
-
-if __name__ == '__main__':
-
-    result = read_AllImg("img/saber",".pgm")

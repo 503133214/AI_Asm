@@ -15,6 +15,7 @@ class Camera_reader(object):
 
     def build_camera(self):
         # opencv文件中人脸级联文件的位置，用于帮助识别图像或者视频流中的人脸
+        global result
         face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
         # 读取dataset数据集下的子文件夹名称
         name_list = read_name_list('../img/picTest')
@@ -23,7 +24,7 @@ class Camera_reader(object):
         # 记录识别的人脸记录
         result_list = []
         # 打开摄像头并开始读取画面
-        cameraCapture = cv2.VideoCapture(1)
+        cameraCapture = cv2.VideoCapture(0)
         success, frame = cameraCapture.read()
         while success and cv2.waitKey(1) == -1:
             success, frame = cameraCapture.read()
@@ -56,7 +57,7 @@ class Camera_reader(object):
         cv2.destroyAllWindows()
         return result
 
-if __name__ == '__main__':
-    camera = Camera_reader()
-    result = camera.build_camera()
-    print(result)
+# if __name__ == '__main__':
+#     camera = Camera_reader()
+#     result = camera.build_camera()
+#     print(result)
