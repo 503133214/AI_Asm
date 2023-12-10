@@ -59,7 +59,7 @@ class Camera_reader(object):
         cv2.destroyAllWindows()
         return result
 
-# if __name__ == '__main__':
-#     camera = Camera_reader()
-#     result = camera.build_camera()
-#     print(result)
+if __name__ == '__main__':
+    camera = Camera_reader()
+    result = camera.build_camera()
+    print(result)

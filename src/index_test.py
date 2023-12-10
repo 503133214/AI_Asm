@@ -53,7 +53,7 @@ def usr_login():
         else:
             tkinter.messagebox.showerror(message='Error, your face does not match your name!')
     else:  # 如果发现用户名不存在
-        is_sign_up = tkinter.messagebox.askyesno('Welcome！ ', 'You have not sign up yet. Sign up now?')
+        is_sign_up = tkinter.messagebox.askyesno('Welcome!', 'You have not sign up yet. Sign up now?')
         # 提示需不需要注册新用户
         if is_sign_up:
             display_sign_up()
@@ -69,7 +69,7 @@ def display_sign_up():
         if nn in name_list:
             tkinter.messagebox.showerror('Error', 'The user has already signed up!')
 
-        # 最后如果输入无以上错误，则将注册输入的信息记录到文件当中，并提示注册成功Welcome！,You have successfully signed up!，然后销毁窗口。
+        # 最后如果输入无以上错误，则将注册输入的信息记录到文件当中，并提示注册成功Welcome! You have successfully signed up!，然后销毁窗口。
         else:
             directory = "../img/source-saber"
             if not os.path.exists(directory + os.sep + nn):
@@ -77,7 +77,7 @@ def display_sign_up():
             fc.take_photo(directory + os.sep + nn)
             name_list.append(nn)
             destination = "../img/picTest"
-            pf.readPicSaveFace_Path(directory, destination, '.jpg', '.JPG', 'png', 'PNG')
+            pf.readPicSaveFace_Path(directory, destination, '.jpg', '.JPG', '.png', '.PNG')
             tkinter.messagebox.showinfo('Welcome', 'You have successfully signed up!')
             # 然后销毁窗口。
             window_sign_up.destroy()
