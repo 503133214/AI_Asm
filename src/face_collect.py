@@ -1,14 +1,12 @@
 import cv2
 import os
 
-cap = cv2.VideoCapture(0)
-
-if not cap.isOpened():
-    print("Cannot open camera")
-    exit()
-
-
 def take_photo(directory):
+    cap = cv2.VideoCapture(0)
+    if not cap.isOpened():
+        print("Cannot open camera")
+        exit()
+
     frame_count = 0
     while True:
         # Capture frame-by-frame
