@@ -3,7 +3,7 @@ __copyright__ = "Copyright 2023, XiamenUniversity"
 
 from dataSet import DataSet
 from keras.models import Sequential, load_model
-from keras.layers import Dense, Activation, Convolution2D, MaxPooling2D, Flatten, Dropout
+from keras.layers import Dense, Activation, Convolution2D, MaxPooling2D, Flatten
 import numpy as np
 
 

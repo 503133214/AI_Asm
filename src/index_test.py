@@ -3,7 +3,6 @@ __copyright__ = "Copyright 2023, XiamenUniversity"
 
 import tkinter as tk  # 使用Tkinter前需要先导入
 import tkinter.messagebox
-import pickle
 from read_data import read_name_list
 import read_camera as rc
 import face_collect as fc

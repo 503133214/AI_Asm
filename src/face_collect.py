@@ -1,5 +1,4 @@
 import cv2
-import os
 
 def take_photo(directory):
     cap = cv2.VideoCapture(0)
