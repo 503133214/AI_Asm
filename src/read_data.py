@@ -3,7 +3,6 @@ __copyright__ = "Copyright 2023, XiamenUniversity"
 
 import os
 import cv2
-from read_image import endwith
 import numpy as np
 
 #输入一个文件路径，对其下的每个文件夹下的图片读取，并对每个文件夹给一个不同的Label
@@ -20,7 +19,7 @@ def read_file(path):
         child_path = os.path.join(path, child_dir)
 
         for dir_image in  os.listdir(child_path):
-            if endwith(dir_image,'jpg'):
+            if dir_image.endswith('.jpg'):
                 img = cv2.imread(os.path.join(child_path, dir_image))
                 resized_img = cv2.resize(img, (IMG_SIZE, IMG_SIZE))
                 recolored_img = cv2.cvtColor(resized_img,cv2.COLOR_BGR2GRAY)
