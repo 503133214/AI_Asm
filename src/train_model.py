@@ -81,7 +81,8 @@ class Model(object):
 
     # 需要确保输入的img得是灰化之后（channel =1 )且大小为IMAGE_SIZE的人脸图片
     def predict(self, img):
-        img = img.reshape((1, 1, self.IMAGE_SIZE, self.IMAGE_SIZE))
+        # (samples, height, width, channels)
+        img = img.reshape((1, self.IMAGE_SIZE, self.IMAGE_SIZE, 1))
         img = img.astype('float32')
         img = img / 255.0
 
