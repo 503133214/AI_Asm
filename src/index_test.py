@@ -56,12 +56,12 @@ def usr_login():
         is_sign_up = tkinter.messagebox.askyesno('Welcome！ ', 'You have not sign up yet. Sign up now?')
         # 提示需不需要注册新用户
         if is_sign_up:
-            usr_sign_up()
+            display_sign_up()
 
 
 # 第9步，定义用户注册功能
-def usr_sign_up():
-    def sign_to_Hongwei_Website():
+def display_sign_up():
+    def sign_up():
         # 我们注册时所输入的信息
         nn = new_name.get()
 
@@ -96,8 +96,7 @@ def usr_sign_up():
     entry_new_name = tk.Entry(window_sign_up, textvariable=new_name)  # 创建一个注册名的`entry`，变量为`new_name`
     entry_new_name.place(x=130, y=10)  # `entry`放置在坐标（150,10）.
 
-    # 下面的 sign_to_Hongwei_Website
-    btn_comfirm_sign_up = tk.Button(window_sign_up, text='Sign up', command=sign_to_Hongwei_Website)
+    btn_comfirm_sign_up = tk.Button(window_sign_up, text='Sign up', command=sign_up)
     btn_comfirm_sign_up.place(x=80, y=120)
 
     btn_comfirm_train = tk.Button(window_sign_up, text='Train', command=train)
@@ -107,7 +106,7 @@ def usr_sign_up():
 # 第7步，login and sign up 按钮
 btn_login = tk.Button(window, text='Login', command=usr_login)
 btn_login.place(x=60, y=240)
-btn_sign_up = tk.Button(window, text='Sign up', command=usr_sign_up)
+btn_sign_up = tk.Button(window, text='Sign up', command=display_sign_up)
 btn_sign_up.place(x=200, y=240)
 
 # 第10步，主窗口循环显示
