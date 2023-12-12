@@ -14,7 +14,7 @@ import train_model as tm
 window = tk.Tk()
 
 # 第2步，给窗口的可视化起名字
-window.title('Face classroom check-in system by saber')
+window.title('Face check-in system')
 
 # 第3步，设定窗口的大小(长 * 宽)
 window.geometry('400x300')  # 这里的乘是小x

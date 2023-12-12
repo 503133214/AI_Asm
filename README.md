@@ -11,10 +11,8 @@
 文件结构如下：
 ```
 ├── img         # 项目图片
-│   ├── dataset
-│   ├── test
 │   ├── picTest
-│   ├── source-saber
+│   ├── source
 ├── model       # 模型文件
 ├── src         # 项目源码
 │   ├── dataSet.py      # 数据集处理
@@ -27,7 +25,7 @@
 │   ├── read_image.py # 读取图片
 │   ├── Test_model.py # 测试模型
 │   ├── train_model.py # 训练模型
-    
+
 
 ├── README.md
 ├── requirement.txt
