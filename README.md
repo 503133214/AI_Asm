@@ -15,16 +15,16 @@
 │   ├── source
 ├── model       # 模型文件
 ├── src         # 项目源码
-│   ├── dataSet.py      # 数据集处理
-│   ├── face_collect.py # 采集人脸 
-│   ├── haarcascade_frontalface_default.xml # opencv人脸检测模型
-│   ├── index_test.py  # 主程序
-│   ├── pick_face.py  # 人脸检测
-│   ├── read_camera.py # 读取摄像头
-│   ├── read_data.py # 读取数据
-│   ├── read_image.py # 读取图片
-│   ├── Test_model.py # 测试模型
-│   ├── train_model.py # 训练模型
+│   ├── dataSet.py      # Dataset calss for exracting data from the model
+│   ├── face_collect.py # Capture faces using the computer camera
+│   ├── haarcascade_frontalface_default.xml # OpenCV face detection model
+│   ├── index_test.py   # Main entry of the project
+│   ├── pick_face.py    # Clip faces from images and apply necessary conversions
+│   ├── read_camera.py  # Running the recognition in real time and label the face if matched
+│   ├── read_data.py    # Read the source dataset directory
+│   ├── read_image.py   # Read all the images under a directory into an array using OpenCV
+│   ├── Test_model.py   # Running the recognition on a single photo and label the face if matched
+│   ├── train_model.py  # Train the model
 
 
 ├── README.md
