@@ -49,5 +49,4 @@ def readPicSaveFace_Path(sourcePath, objectPath, *suffix):
 
 
 if __name__ == '__main__':
-    # readPicSaveFace('../img/dataset', '../img/picTest/saber', '.jpg', '.JPG', 'png', 'PNG')
-    readPicSaveFace_Path('../img/source-saber', '../img/picTest', '.jpg', '.JPG', '.png', '.PNG')
+    readPicSaveFace_Path('../img/source', '../img/picTest', '.jpg', '.JPG', '.png', '.PNG')

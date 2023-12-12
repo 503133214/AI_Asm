@@ -14,7 +14,7 @@ import train_model as tm
 window = tk.Tk()
 
 # 第2步，给窗口的可视化起名字
-window.title('Face classroom check-in system by saber')
+window.title('Face check-in system')
 
 # 第3步，设定窗口的大小(长 * 宽)
 window.geometry('400x300')  # 这里的乘是小x
@@ -71,7 +71,7 @@ def display_sign_up():
 
         # 最后如果输入无以上错误，则将注册输入的信息记录到文件当中，并提示注册成功Welcome! You have successfully signed up!，然后销毁窗口。
         else:
-            directory = "../img/source-saber"
+            directory = "../img/source"
             if not os.path.exists(directory + os.sep + nn):
                 os.makedirs(directory + os.sep + nn)
             fc.take_photo(directory + os.sep + nn)
