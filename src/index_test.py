@@ -71,7 +71,7 @@ def display_sign_up():
 
         # 最后如果输入无以上错误，则将注册输入的信息记录到文件当中，并提示注册成功Welcome! You have successfully signed up!，然后销毁窗口。
         else:
-            directory = "../img/source-saber"
+            directory = "../img/source"
             if not os.path.exists(directory + os.sep + nn):
                 os.makedirs(directory + os.sep + nn)
             fc.take_photo(directory + os.sep + nn)
