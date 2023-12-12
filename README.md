@@ -90,4 +90,14 @@ opencv人脸检测模型
 ### train_model.py
 训练模型
 
+## _About Author
+
+>Men Zhaolin
+>Qi Yujun 
+>Li Xingchen
+>Zhang Zhou
+>Yang Yifan
+>
+>All from Xiamen University Malaysia 
+>
 
