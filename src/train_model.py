@@ -5,9 +5,34 @@ from dataSet import DataSet
 from keras.models import Sequential, load_model
 from keras.layers import Dense, Activation, Convolution2D, MaxPooling2D, Flatten
 import numpy as np
+import matplotlib.pyplot as plt
 
 
 # 建立一个基于CNN的人脸识别模型
+def plot_training_history(history):
+    # 绘制训练过程中的损失值和准确率
+    plt.figure(figsize=(12, 4))
+
+    # 绘制训练损失值
+    plt.subplot(1, 2, 1)
+    plt.plot(history.history['loss'], label='loss')
+    plt.title('Training Loss')
+    plt.xlabel('Epoch')
+    plt.ylabel('Loss')
+    plt.legend()
+
+    # 绘制训练准确率
+    plt.subplot(1, 2, 2)
+    plt.plot(history.history['accuracy'], label='accuracy')
+    plt.title('Training Accuracy')
+    plt.xlabel('Epoch')
+    plt.ylabel('Accuracy')
+    plt.legend()
+
+    plt.tight_layout()
+    plt.show()
+
+
 class Model(object):
     FILE_PATH = "../model/model.h5"  # 模型进行存储和读取的地方
     IMAGE_SIZE = 128  # 模型接受的人脸图片一定得是128*128的
@@ -60,9 +85,9 @@ class Model(object):
             optimizer='adam',
             loss='categorical_crossentropy',
             metrics=['accuracy'])
-
         # epochs、batch_size为可调的参数
-        self.model.fit(self.dataset.X_train, self.dataset.Y_train, epochs=30, batch_size=30)
+        history = self.model.fit(self.dataset.X_train, self.dataset.Y_train, epochs=30, batch_size=30)
+        plot_training_history(history)
 
     def evaluate_model(self):
         print('\nTesting---------------')

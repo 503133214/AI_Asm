@@ -14,7 +14,7 @@ def Test_onePicture(path):
     img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     picType, prob = model.predict(img)
     if picType != -1:
-        name_list = read_name_list('../img/dataset')
+        name_list = read_name_list('../img/picTest')
         print(name_list[picType], prob)
     else:
         print(" Don't know this person")
@@ -30,7 +30,7 @@ def Test_onBatch(path):
         picType, prob = model.predict(img)
         if picType != -1:
             index += 1
-            name_list = read_name_list('../img/dataset')
+            name_list = read_name_list('../img/picTest')
             print(name_list[picType])
         else:
             print(" Don't know this person")
@@ -39,5 +39,5 @@ def Test_onBatch(path):
 
 
 if __name__ == '__main__':
-    Test_onePicture('../img/dataset/saber/17014883652.jpg')
-    # Test_onBatch('../img/dataset')
+    # Test_onePicture('../img/dataset/saber/17014883652.jpg')
+    Test_onBatch('../img/picTest/saber')
