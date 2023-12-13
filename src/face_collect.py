@@ -17,6 +17,8 @@ def take_photo(directory):
         # Save the frame as an image file
         file_name = f"{directory}/frame_{frame_count:03}.jpg"
         cv2.imwrite(file_name, frame)
+        # mirror the frame, so the user can adjust angles naturally
+        frame = cv2.flip(frame, 1)
         frame_count += 1
         font = cv2.FONT_HERSHEY_TRIPLEX
         cv2.putText(frame, 'num:%d' % frame_count, (30, 30), font, 1, (255, 0, 255), 4)
