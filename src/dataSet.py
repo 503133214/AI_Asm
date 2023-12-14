@@ -17,25 +17,25 @@ class DataSet(object):
         self.extract_data(path)
 
     def extract_data(self, path):
-        # 根据指定路径读取出图片、标签和类别数
+        # Read out the number of images, tags and categories according to a specified path
         imgs, labels, counter = read_file(path)
 
-        # 将数据集打乱随机分组
+        # Disrupting the dataset into randomized groups
         X_train, X_test, y_train, y_test = train_test_split(imgs, labels, test_size=0.2, random_state=random.randint(0, 100))
 
-        # 重新格式化和标准化
-        # 基于tensorflow的backend，数据格式应为(samples, height, width, channels)
+        # Reformatting and standardization
+        # Based on tensorflow backend，data format:(samples, height, width, channels)
         X_train = X_train.reshape(X_train.shape[0], self.img_size, self.img_size, 1) / 255.0
         X_test = X_test.reshape(X_test.shape[0], self.img_size, self.img_size, 1) / 255.0
 
         X_train = X_train.astype('float32')
         X_test = X_test.astype('float32')
 
-        # 将labels转成 binary class matrices
+        # Covert labels to binary class matrices
         Y_train = np_utils.to_categorical(y_train, num_classes=counter)
         Y_test = np_utils.to_categorical(y_test, num_classes=counter)
 
-        # 将格式化后的数据赋值给类的属性上
+        # Assigning formatted data to class properties
         self.X_train = X_train
         self.X_test = X_test
         self.Y_train = Y_train
