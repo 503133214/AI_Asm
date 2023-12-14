@@ -8,12 +8,12 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-# 建立一个基于CNN的人脸识别模型
+# Building a CNN-based face recognition model
 def plot_training_history(history):
-    # 绘制训练过程中的损失值和准确率
+    # Plotting loss values and accuracies during training
     plt.figure(figsize=(12, 4))
 
-    # 绘制训练损失值
+    # Plotting training loss values
     plt.subplot(1, 2, 1)
     plt.plot(history.history['loss'], label='loss')
     plt.title('Training Loss')
@@ -21,7 +21,7 @@ def plot_training_history(history):
     plt.ylabel('Loss')
     plt.legend()
 
-    # 绘制训练准确率
+    # Plotting training accuracy
     plt.subplot(1, 2, 2)
     plt.plot(history.history['accuracy'], label='accuracy')
     plt.title('Training Accuracy')
@@ -34,17 +34,17 @@ def plot_training_history(history):
 
 
 class Model(object):
-    FILE_PATH = "../model/model.h5"  # 模型进行存储和读取的地方
-    IMAGE_SIZE = 128  # 模型接受的人脸图片一定得是128*128的
+    FILE_PATH = "../model/model.h5"  # Where models are stored and read
+    IMAGE_SIZE = 128  # The face image accepted by the model must be 128*128
 
     def __init__(self):
         self.model = None
 
-    # 读取实例化后的DataSet类作为进行训练的数据源
+    # Read the instantiated DataSet class as a data source for training.
     def read_trainData(self, dataset):
         self.dataset = dataset
 
-    # 建立一个CNN模型，一层卷积、一层池化、一层卷积、一层池化、抹平之后进行全链接、最后进行分类
+    # Build a CNN model with one layer of convolution, one layer of pooling, one layer of convolution, one layer of pooling, full linking after smoothing, and finally classification
     def build_model(self):
         self.model = Sequential()
         self.model.add(
@@ -52,7 +52,7 @@ class Model(object):
                 filters=32,
                 kernel_size=(5, 5),
                 padding='same',
-                data_format='channels_first',  # 修改此处
+                data_format='channels_first',  
                 input_shape=self.dataset.X_train.shape[1:]
             )
         )
@@ -66,7 +66,7 @@ class Model(object):
             )
         )
 
-        # 第二层卷积层无需指定输入形状和数据格式
+        # The second convolutional layer eliminates the need to specify the input shape and data format
         self.model.add(Convolution2D(filters=64, kernel_size=(5, 5), padding='same'))
         self.model.add(Activation('relu'))
         self.model.add(MaxPooling2D(pool_size=(2, 2), strides=(2, 2), padding='same'))
@@ -79,13 +79,13 @@ class Model(object):
         self.model.add(Activation('softmax'))
         self.model.summary()
 
-    # 进行模型训练的函数，具体的optimizer、loss可以进行不同选择
+    # Functions for model training, specific optimizer, loss can be different choices
     def train_model(self):
         self.model.compile(
             optimizer='adam',
             loss='categorical_crossentropy',
             metrics=['accuracy'])
-        # epochs、batch_size为可调的参数
+        # epochs、batch_size is an adjustable parameter
         history = self.model.fit(self.dataset.X_train, self.dataset.Y_train, epochs=30, batch_size=30)
         plot_training_history(history)
 
@@ -105,16 +105,16 @@ class Model(object):
         self.model = load_model(file_path)
 
     def predict(self, img):
-        # 需要确保输入的img得是灰化之后（channel=1) 且大小为IMAGE_SIZE的人脸图片
+        # Make sure that the input img is grayed out (channel=1) and has a size of IMAGE_SIZE.
         # (samples, height, width, channels)
         img = img.reshape((1, self.IMAGE_SIZE, self.IMAGE_SIZE, 1))
         img = img.astype('float32')
         img = img / 255.0
 
-        result = self.model.predict(img)  # 测算一下该img属于某个label的概率
-        max_index = np.argmax(result)  # 找出概率最高的
+        result = self.model.predict(img)  # Measure the probability that the img belongs to a certain label
+        max_index = np.argmax(result)  # Find the most probable
 
-        return max_index, result[0][max_index]  # 第一个参数为概率最高的label的index,第二个参数为对应概率
+        return max_index, result[0][max_index]  # The first parameter is the index of the label with the highest probability, the second parameter is the corresponding probability
 
 
 def train():
