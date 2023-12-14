@@ -20,7 +20,7 @@ def Test_onePicture(path):
         print(" Don't know this person")
 
 
-# 读取文件夹下子文件夹中所有图片进行识别
+# Read all images in subfolders under a folder for recognition
 def Test_onBatch(path):
     model = Model()
     model.load()
