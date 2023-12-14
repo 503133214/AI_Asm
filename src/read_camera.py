@@ -10,27 +10,27 @@ class Camera_reader(object):
     IMG_SIZE = 128
     PROB_THRESHOLD = 0.7
 
-    # 在初始化camera的时候建立模型，并加载已经训练好的模型
+    # Build the model when initializing the camera and load the already trained model
     def __init__(self):
         self.model = Model()
         self.model.load()
 
     def build_camera(self):
-        # opencv文件中人脸级联文件的位置，用于帮助识别图像或者视频流中的人脸
+        # Location of the face cascade file in the opencv file, used to help recognize faces in images or video streams
         face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
-        # 读取dataset数据集下的子文件夹名称
+        # Retrieve subfolder names under dataset dataset
         name_list = read_name_list('../img/picTest')
-        # 记录识别人脸的次数
+        # Record the number of times a face is recognized
         counter = 0
-        # 记录识别的人脸记录
+        # Recording of recognized face records
         result_list = []
-        # 打开摄像头并开始读取画面
+        # Turn on the camera and start reading the screen
         cameraCapture = cv2.VideoCapture(0)
         success, frame = cameraCapture.read()
         while success and cv2.waitKey(1) == -1:
             success, frame = cameraCapture.read()
-            gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)  # 图像灰化
-            faces = face_cascade.detectMultiScale(gray, 1.3, 5)  # 识别人脸
+            gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)  # Graying of images
+            faces = face_cascade.detectMultiScale(gray, 1.3, 5)  # face recognition
             for (x, y, w, h) in faces:
                 if x < 0 or y < 0 or w <= 0 or h <= 0 or (x + w) > gray.shape[1] or (y + h) > gray.shape[0]:
                     continue
@@ -38,17 +38,17 @@ class Camera_reader(object):
                 if ROI.size == 0:
                     continue
                 ROI = cv2.resize(ROI, (self.IMG_SIZE, self.IMG_SIZE), interpolation=cv2.INTER_LINEAR)
-                label, prob = self.model.predict(ROI)  # 利用模型对cv2识别出的人脸进行比对
-                if prob > self.PROB_THRESHOLD:  # 如果模型认为概率高于70%则显示为模型中已有的label
+                label, prob = self.model.predict(ROI)  # Comparison of faces recognized by cv2 using models
+                if prob > self.PROB_THRESHOLD:  # If the model considers the probability to be higher than 70% then it is shown as a label already in the model
                     show_name = name_list[label]
                 else:
                     show_name = 'Stranger'
-                cv2.putText(frame, show_name, (x, y - 20), cv2.FONT_HERSHEY_SIMPLEX, 1, 255, 2)  # 显示名字
-                frame = cv2.rectangle(frame, (x, y), (x + w, y + h), (255, 0, 0), 2)  # 在人脸区域画一个正方形出来
+                cv2.putText(frame, show_name, (x, y - 20), cv2.FONT_HERSHEY_SIMPLEX, 1, 255, 2)  # Show Name
+                frame = cv2.rectangle(frame, (x, y), (x + w, y + h), (255, 0, 0), 2)  # Draw a square out of the face area
                 result_list.append(show_name)
                 counter += 1
             cv2.imshow("Camera", frame)
-            if cv2.waitKey(1) & 0xFF == ord('q'):  # 按 'q' 键退出
+            if cv2.waitKey(1) & 0xFF == ord('q'):  # Press 'q' to exit
                 break
             if counter >= 30:
                 break
