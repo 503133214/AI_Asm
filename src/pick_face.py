@@ -10,10 +10,10 @@ from read_data import read_name_list
 
 def readPicSaveFace(sourcePath, objectPath, *suffix):
     try:
-        # 读取照片,注意第一个元素是文件名
+        # Read the photo, note that the first element is the filename.
         resultArray = read_AllImg(sourcePath, *suffix)
 
-        # 对list中图片逐一进行检查,找出其中的人脸然后写到目标文件夹下
+        # Check the list of images one by one, find the faces and write them to the target folder.
 
         count = 1
         face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
@@ -23,7 +23,7 @@ def readPicSaveFace(sourcePath, objectPath, *suffix):
                 gray = cv2.cvtColor(i, cv2.COLOR_BGR2GRAY)
                 faces = face_cascade.detectMultiScale(gray, 1.3, 5)
                 for (x, y, w, h) in faces:
-                    listStr = [str(int(time.time())), str(count)]  # 以时间戳和读取的排序作为文件名称
+                    listStr = [str(int(time.time())), str(count)]  # Timestamp and read sort as file name
                     fileName = ''.join(listStr)
 
                     f = cv2.resize(gray[y:(y + h), x:(x + w)], (200, 200))
