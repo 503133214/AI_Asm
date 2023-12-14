@@ -4,8 +4,8 @@ __copyright__ = "Copyright 2023, XiamenUniversity"
 import os
 import cv2
 
-#根据输入的文件夹绝对路径，将该文件夹下的所有指定suffix的文件读取存入一个list
-#该list的第一个元素是该文件夹的名字
+#Based on the absolute path of the input folder, read all the files with the specified suffix under the folder and store them in a list.
+#The first element of the list is the name of the folder.
 def read_AllImg(path,*suffix):
     try:
 
