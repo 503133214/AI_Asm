@@ -6,8 +6,8 @@ import cv2
 import numpy as np
 
 
-# 输入一个文件路径，对其下的每个文件夹下的图片读取，并对每个文件夹给一个不同的Label
-# 返回一个img的list,返回一个对应label的list,返回一下有几个文件夹（有几种label)
+# Input a file path, read the images in each folder under it, and give a different Label to each folder.
+# Return a list of imgs, return a list of corresponding labels, return how many folders (how many labels) there are.
 
 def read_file(path):
     img_list = []
@@ -15,7 +15,7 @@ def read_file(path):
     dir_counter = 0
     IMG_SIZE = 128
 
-    # 对路径下的所有子文件夹中的所有jpg文件进行读取并存入到一个list中
+    # Read all the jpg files in all the subfolders under the path and store them in a list.
     for child_dir in os.listdir(path):
         child_path = os.path.join(path, child_dir)
 
@@ -29,12 +29,12 @@ def read_file(path):
 
         dir_counter += 1
 
-    # 返回的img_list转成了 np.array的格式
+    # The returned img_list is converted to the np.array format
     img_list = np.array(img_list)
     return img_list, label_list, dir_counter
 
 
-# 读取训练数据集的文件夹，把他们的名字返回给一个list
+# Read the folders of the training dataset and return their names to a list
 def read_name_list(path):
     name_list = []
     for child_dir in os.listdir(path):
